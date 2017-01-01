@@ -7,7 +7,7 @@ Redis nodes are clustered using [sentinel HA feature](https://redis.io/topics/se
 
 ### Build the project (set up the environment) ###
 
-The cluster size can be controlled by setting an environment variable called 'NCR_CLUSTER_SIZE'. 
+The cluster size can be controlled by setting an environment variable called `NCR_CLUSTER_SIZE`. 
 If this variable is not set, or is set to a value lower than 3 - it will be set to 3 automatically. If it's set to 4 or higher- 
 it will be taken into account and determine the size of the cluster.
 

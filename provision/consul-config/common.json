@@ -1,0 +1,8 @@
+{
+    "retry_join": ["172.20.20.11", "172.20.20.12", "172.20.20.13"],
+    "data_dir": "/opt/consul/data",
+    "client_addr": "0.0.0.0",
+    "server": true,
+    "bootstrap_expect": 3,
+    "ui": true
+}

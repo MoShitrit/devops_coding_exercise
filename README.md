@@ -4,6 +4,10 @@ The virtual machines are Linux-based (centos 7).
 The Consul servers are installed directly on the VMs, while redis runs as [Docker](https://www.docker.com/) containers.
 Consul environment is configured to run with a minimum of 3 servers, which means all 3 VMs must be running for the cluster to function.
 Redis nodes are clustered using [sentinel HA feature](https://redis.io/topics/sentinel).
+* Consul UI can be accessed by opening a web-browser and accessing each of the nodes via http://<ip>:8500/, i.e. [http://172.20.20.11:8500/](http://172.20.20.11:8500/).
+* Redis DB is listening on port 6379 on each node. The master is initially set up on node1 (172.20.20.11) and slaves will be created on each additional node.
+* Redis Sentinel is listening on port 5000 on each node.
+
 
 ### Build the project (set up the environment) ###
 
@@ -31,8 +35,11 @@ The script parses the running nodes list from `vagrant status` command.
 
 Next, it will run the following commands / checks on each node:
 * `consul members` - to verify all nodes are members of the consul cluster and are alive.
-* `dig @localhost -p 8600 redis.service.consul SRV` - To query the consul DNS and make sure all redis nodes are up.
-* `dig @localhost -p 8600 redis-sentinel.service.consul SRV` - To query the consul DNS and make sure
-  all sentinel nodes are up.
 * `docker exec -it sentinel redis-cli -p 5000 SENTINEL get-master-addr-by-name mymaster` - To query all
   sentinel containers and make sure they all see the same redis master.
+
+### Resetting the environment ###
+
+In case an environment reset is needed, open a shell terminal and navigate to the Vagrantfile location and run `vagrant destroy`.
+
+Once the command completes, perform the Build instructions again to build from scratch.

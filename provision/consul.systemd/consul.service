@@ -1,0 +1,17 @@
+[Unit]
+Description=consul agent
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/consul
+EnvironmentFile=-/tmp/ip_for_consul.txt
+Environment=GOMAXPROCS=$(nproc)
+Restart=on-failure
+ExecStartPre=-/vagrant/provision/set_ip_env_file.sh
+ExecStart=/usr/local/bin/consul agent -config-dir=/etc/consul.d -advertise $IP $OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

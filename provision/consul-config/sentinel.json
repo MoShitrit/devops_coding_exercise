@@ -1,0 +1,11 @@
+{
+  "service": {
+    "name": "redis-sentinel",
+    "port": 5000,
+    "check": {
+      "tcp": "localhost:5000",
+      "interval": "10s",
+      "timeout": "1s"
+    }
+  }
+}

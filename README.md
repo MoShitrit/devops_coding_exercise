@@ -1,6 +1,13 @@
 # NCR Cloud Development Team - DevOps Coding Exercise #
 This project sets up an environment that contains 3 VMs running [consul](https://www.consul.io/) and [redis](https://redis.io/).
-The virtual machines are Linux-based (centos 7).
+The virtual machines are Linux-based ([centos 7](https://atlas.hashicorp.com/centos/boxes/7)). This box supports 4 providers:
+* [vmware_workstation](http://www.vmware.com/products/workstation.html)
+* [libvirt](https://libvirt.org/)
+* [virtualbox](https://www.virtualbox.org/)
+* [vmware_fusion](http://www.vmware.com/products/fusion.html)
+
+A mandatory requirement for this project is to have [Vagrant](https://www.vagrantup.com/) installed.
+
 The Consul servers are installed directly on the VMs, while redis runs as [Docker](https://www.docker.com/) containers.
 Consul environment is configured to run with a minimum of 3 servers, which means all 3 VMs must be running for the cluster to function.
 Redis nodes are clustered using [sentinel HA feature](https://redis.io/topics/sentinel).

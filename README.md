@@ -1,4 +1,4 @@
-# NCR Cloud Development Team - DevOps Coding Exercise #
+# Cloud Development Team - DevOps Coding Exercise #
 This project sets up an environment that contains 3 VMs running [consul](https://www.consul.io/) and [redis](https://redis.io/).
 The virtual machines are Linux-based ([centos 7](https://atlas.hashicorp.com/centos/boxes/7)). This box supports 4 providers:
 * [vmware_workstation](http://www.vmware.com/products/workstation.html)
